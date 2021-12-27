@@ -1,9 +1,9 @@
 <?php
 
-namespace mikeTrueh\WbStat;
+namespace WbStat;
 
-use mikeTrueh\WbStat\Exception\RequestException;
-use mikeTrueh\WbStat\Exception\WbStatException;
+use WbStat\Exceptions\RequestException;
+use WbStat\Exceptions\WbStatException;
 
 abstract class Request
 {

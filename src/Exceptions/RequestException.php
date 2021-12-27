@@ -1,6 +1,6 @@
 <?php
 
-namespace mikeTrueh\WbStat\Exception;
+namespace WbStat\Exceptions;
 
 class RequestException extends WbStatException
 {

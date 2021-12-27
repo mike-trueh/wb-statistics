@@ -1,10 +1,10 @@
 <?php
 
-namespace mikeTrueh\WbStat;
+namespace WbStat;
 
 use DateTime;
-use mikeTrueh\WbStat\Exception\RequestException;
-use mikeTrueh\WbStat\Exception\WbStatException;
+use WbStat\Exceptions\RequestException;
+use WbStat\Exceptions\WbStatException;
 
 class WbStatSDK extends Request
 {
