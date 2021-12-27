@@ -5,7 +5,7 @@ namespace mikeTrueh\WbStat;
 use mikeTrueh\WbStat\Exception\RequestException;
 use mikeTrueh\WbStat\Exception\WbStatException;
 
-class Request
+abstract class Request
 {
     const URL = 'https://suppliers-stats.wildberries.ru/api/v1/supplier';
 
