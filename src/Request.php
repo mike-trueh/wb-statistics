@@ -22,20 +22,23 @@ abstract class Request
      * @param string $url
      * @param array $params
      * @param string $method
-     * @param bool $auth
      * @return mixed
      * @throws RequestException
      * @throws WbStatException
      */
-    protected function request(string $url, array $params = [], string $method = 'get', bool $auth = true)
+    protected function request(string $url, array $params = [], string $method = 'get')
     {
         $headers = ['Content-Type: application/json'];
 
-        if ($auth) {
-            if (!$this->token) throw new WbStatException('Не указан токен партнёра');
+        if (!$this->token) throw new WbStatException('Не указан токен партнёра');
 
-            $params['key'] = $this->token;
-        }
+        $params['key'] = $this->token;
+
+        if (isset($params['dateFrom']))
+            $params['dateFrom'] = $params['dateFrom']->format('c');
+
+        if (isset($params['dateTo']))
+            $params['dateTo'] = $params['dateTo']->format('c');
 
         return $this->requestCurl($url, $params, $method, $headers);
     }
@@ -83,10 +86,14 @@ abstract class Request
         $error = curl_error($ch);
         curl_close($ch);
 
-        if ($errno) {
+        if ($errno)
             throw new RequestException('Запрос произвести не удалось: ' . $error, $errno);
-        }
 
-        return json_decode($response, true);
+        $decodedResponse = json_decode($response, true);
+
+        if ($errors = $decodedResponse['errors'])
+            throw new RequestException('Ошибка запроса: ' . implode('; ', $errors));
+
+        return $decodedResponse;
     }
 }
