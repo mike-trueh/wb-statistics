@@ -91,8 +91,8 @@ abstract class Request
 
         $decodedResponse = json_decode($response, true);
 
-        if ($errors = $decodedResponse['errors'])
-            throw new RequestException('Ошибка запроса: ' . implode('; ', $errors));
+        if (isset($decodedResponse['errors']))
+            throw new RequestException('Ошибка запроса: ' . implode('; ', $decodedResponse['errors']));
 
         return $decodedResponse;
     }

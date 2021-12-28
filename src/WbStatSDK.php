@@ -34,10 +34,10 @@ class WbStatSDK extends Request
     /**
      * Задать дату для запросов
      *
-     * @param DateTime $dateTime
+     * @param DateTime|null $dateTime
      * @return $this
      */
-    public function setDate(DateTime $dateTime): WbStatSDK
+    public function setDate(DateTime $dateTime = null): WbStatSDK
     {
         $this->dateTime = $dateTime;
 
@@ -115,15 +115,15 @@ class WbStatSDK extends Request
     /**
      * Отчет о продажах по реализации
      *
-     * @param DateTime|null $dateTime Начальная дата периода
-     * @param DateTime|null $dateTo Конечная дата периода
+     * @param DateTime $dateTo Конечная дата периода
      * @param int $limit Максимальное количество строк отчета получаемых в результате вызова API. Рекомендуем загружать отчет небольшими частями, например, по 100 000 строк на один вызов
      * @param int $rrdid Уникальный идентификатор строки отчета. Необходим для получения отчета частями
+     * @param DateTime|null $dateTime Начальная дата периода
      * @return mixed
      * @throws RequestException
      * @throws WbStatException
      */
-    public function reportDetailByPeriod(DateTime $dateTime = null, DateTime $dateTo = null, int $limit = 1000, int $rrdid = 0)
+    public function reportDetailByPeriod(DateTime $dateTo, int $limit = 1000, int $rrdid = 0, DateTime $dateTime = null)
     {
         return $this->request('reportDetailByPeriod', ['dateFrom' => $dateTime ?? $this->dateTime ?? null, 'dateTo' => $dateTo, 'limit' => $limit, 'rrdid' => $rrdid,]);
     }
