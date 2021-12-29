@@ -1,6 +1,7 @@
 # Wildberries Statistics SDK
 
-Wildberries Statistics SDK - PHP SDK пакет для взаимодействия с API [Wildberries](https://images.wbstatic.net/portal/education/Kak_rabotat'_s_servisom_statistiki.pdf)
+Wildberries Statistics SDK - PHP SDK пакет для взаимодействия с
+API [Wildberries](https://images.wbstatic.net/portal/education/Kak_rabotat'_s_servisom_statistiki.pdf)
 
 ## Установка
 
@@ -9,6 +10,7 @@ $ composer require mike-trueh/wb-stat
 ```
 
 ## Поддерживаемые методы
+
 - incomes
 - stocks
 - orders
@@ -21,6 +23,7 @@ $ composer require mike-trueh/wb-stat
 ## Примеры
 
 **incomes**
+
 ``` php
 use WbStat\WbStatSDK;
 ...
@@ -30,4 +33,26 @@ $wbStat = new WbStatSDK('YOUR-TOKEN');
 $incomes = $wbStat->incomes($date); 
 // Дату можно установить через функцию setDate() 
 $incomes = $wbStat->setDate($date)->incomes(); 
+```
+
+## Тестирование
+
+Скопируйте файл
+
+``` bash
+$ cp phpunit.xml.dist phpunit.xml
+```
+
+Установка работающего токена вместо _fakeApiToken_ в файле _phpunit.xml_
+
+``` xml
+<php>
+    <env name="WBSTAT_TOKEN" value="fakeApiToken" force="true"/>
+</php>
+```
+
+Запуск тестов
+
+``` bash
+$ composer test
 ```
