@@ -36,6 +36,8 @@ abstract class Request
 
         if (isset($params['dateFrom']))
             $params['dateFrom'] = $params['dateFrom']->format('c');
+        else
+            throw new WbStatException('Не указан параметр dateFrom');
 
         if (isset($params['dateTo']))
             $params['dateTo'] = $params['dateTo']->format('c');
