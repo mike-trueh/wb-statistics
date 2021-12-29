@@ -127,4 +127,17 @@ class WbStatSDK extends Request
     {
         return $this->request('reportDetailByPeriod', ['dateFrom' => $dateTime ?? $this->dateTime ?? null, 'dateTo' => $dateTo, 'limit' => $limit, 'rrdid' => $rrdid,]);
     }
+
+    /**
+     * Получить отчет по КиЗам
+     *
+     * @param DateTime|null $dateTime Время, с которого нужно получить отчет
+     * @return mixed
+     * @throws RequestException
+     * @throws WbStatException
+     */
+    public function exciseGoods(DateTime $dateTime = null)
+    {
+        return $this->request('excise-goods', ['dateFrom' => $dateTime ?? $this->dateTime ?? null]);
+    }
 }

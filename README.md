@@ -14,6 +14,7 @@ $ composer require mike-trueh/wb-stat
 - orders
 - sales
 - reportDetailByPeriod
+- exciseGoods
 
 [Официальная документация](https://images.wbstatic.net/portal/education/Kak_rabotat'_s_servisom_statistiki.pdf)
 
