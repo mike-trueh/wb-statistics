@@ -8,7 +8,6 @@
     "sdk"
   ],
   "license": "MIT",
-  "version": "0.0.4",
   "authors": [
     {
       "name": "Mikhail Kryzhanovskiy",
@@ -17,7 +16,7 @@
     }
   ],
   "require": {
-    "php": ">=7.3",
+    "php": ">=7.1",
     "ext-curl": "*",
     "ext-json": "*"
   },
